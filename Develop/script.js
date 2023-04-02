@@ -1,6 +1,4 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
-
 
 // Ask User password length  (8 - 128 characters) 
 //    - Display error if length is incorrect 
@@ -11,33 +9,59 @@ var generateBtn = document.querySelector("#generate");
 // Ask if user wants uppercase characters 
 // Ask if user wants numbers 
 
-//Generate pass based on criteria 
+// Generate pass based on criteria 
 // Return generated password
 // update DOM
 
+let generateBtn = document.querySelector("#generate");
+
+
+//Generate password Function
+
 function generatePassword() {
 
-  let length = 0;
-  while (length < 8 || length > 128) {
-  length = parseInt(prompt("Enter the desired password length:"));
-  if (length < 8 || length > 128 ) {
-    alert("Password length must be between 8 and 128 characters.");
-    }
+//Password Length 
+let length = parseInt(prompt("Enter the desired password length (between 8 and 128 characters):"));
+if (isNaN(length)) {
+// If User Clicks Cancel
+  alert("Password generation cancelled.");
+  return "Your Secure Password"
+}
+while (length < 8 || length > 128) {
+  length = parseInt(prompt("Password length must be between 8 and 128 characters. Enter the desired password length:"));
+  if (isNaN(length)) {
+    alert("Password generation cancelled.");
+    return "Your Secure Password"
   }
+}
+
+// Password characteristics confirmation
 
   let lowercase = confirm("Include lowercase letters?");
   let uppercase = confirm("Include uppercase letters?");
   let numbers = confirm("Include numbers?");
   let symbols = confirm("Include symbols (!, @, #, $, %)?");
   
+
+// If True add & assign characters
+
   let charset = "";
   if (lowercase) charset += "abcdefghijklmnopqrstuvwxyz";
   if (uppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   if (numbers) charset += "0123456789";
   if (symbols) charset += "!@#$%";
-  if  charset == false;
-    alert("Error: At least one character type should be selected");
 
+  // Check At least one character is confimed
+
+  if (!lowercase && !uppercase && !numbers && !symbols) {
+    alert("You must select at least one password characteristic.");
+    alert("Password generation cancelled.");
+    return "Your Secure Password"
+  }
+  
+  // Password 'For' loop random generation
+  // When number is less then length (), add random character
+  // Returns password
   
   let password = "";
   for (let i = 0, n = charset.length; i < length; ++i) {
@@ -45,7 +69,6 @@ function generatePassword() {
   }
 return password;
 }
-
 
 
 // Write password to the #password input
