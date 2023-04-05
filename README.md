@@ -1,6 +1,11 @@
 # js-passwordgeneration
 A Javascript based password generator for module 3's challenge
 
+Please view the deployed application via the link below:
+https://mlukicdesign.github.io/js-passwordgeneration/
+
+<img src="assets/Screenshot 2023-04-05 at 9.52.30 pm.png">
+
 ---
 <h1>Acceptance Criteria</h1>
 - GIVEN I need a new, secure password
